@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EmployeeViewModel>
+
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employees</h1>
+    @Html.ActionLink("Create", "Add")
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Joining Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-controller="employee" asp-action="detail" asp-route-id="@item.Id">@item.Name</a> </td>
+                    <td>@item.JoiningDate.ToShortDateString()</td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,33 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Employees Details</h1>
+        @using (Html.BeginForm("Add"))
+        {
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.JoiningDate)
+                @Html.TextBoxFor(m => m.JoiningDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.IsMale)
+                @Html.CheckBoxFor(m => m.IsMale)
+            </td>
+        </tr>
+    </table>
+           <input type="submit"  value="submit"/>
+        }
+    </div>
