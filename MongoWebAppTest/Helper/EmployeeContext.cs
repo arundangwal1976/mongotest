@@ -13,7 +13,7 @@ namespace MongoWebAppTest.Helper
 
         public EmployeeContext()
         {
-            var dbClient = new MongoClient("mongodb+srv://<username>:<password>@cluster0-4ydqr.mongodb.net/test?retryWrites=true&w=majority");
+            var dbClient = new MongoClient("mongodb+srv://arundan:<password>@cluster0-4ydqr.mongodb.net/test?retryWrites=true&w=majority");
             db = dbClient.GetDatabase("hrm");
 
 
