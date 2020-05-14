@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoWebAppTest.Helper;
+using MongoWebAppTest.Models;
 
 namespace MongoWebAppTest
 {
@@ -24,6 +26,10 @@ namespace MongoWebAppTest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<MongoConfiguration>(Configuration.GetSection("Mongo"));
+            services.AddTransient<IDataContext<Employee, EmployeeViewModel>, EmployeeContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

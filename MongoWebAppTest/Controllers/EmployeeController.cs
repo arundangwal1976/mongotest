@@ -10,12 +10,12 @@ namespace MongoWebAppTest.Controllers
     public class EmployeeController : Controller
     {
         private readonly ILogger<EmployeeController> _logger;
-        private readonly EmployeeContext employeeContext = new EmployeeContext();
+        private readonly IDataContext<Employee, EmployeeViewModel> employeeContext;
 
-        public EmployeeController(ILogger<EmployeeController> logger)
+        public EmployeeController(ILogger<EmployeeController> logger, IDataContext<Employee, EmployeeViewModel> dbContext)
         {
             _logger = logger;
-            
+            employeeContext = dbContext;
         }
 
         public IActionResult Index()

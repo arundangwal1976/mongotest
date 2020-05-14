@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoWebAppTest.Models;
 
 namespace MongoWebAppTest.Helper
 {
-    public class EmployeeContext
+    public class EmployeeContext: IDataContext<Employee, EmployeeViewModel>
     {
+        MongoConfiguration mongoConfiguration;
         IMongoDatabase db;
 
-        public EmployeeContext()
+        public EmployeeContext(IOptionsMonitor<MongoConfiguration> option)
         {
-            var dbClient = new MongoClient("mongodb+srv://arundan:<password>@cluster0-4ydqr.mongodb.net/test?retryWrites=true&w=majority");
+            mongoConfiguration = option.CurrentValue;
+
+            var dbClient = new MongoClient(mongoConfiguration.Connection);
             db = dbClient.GetDatabase("hrm");
 
 
